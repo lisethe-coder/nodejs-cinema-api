@@ -9,7 +9,7 @@ moment.tz.setDefault("UTC");
 
 // Axios
 const $http = axios.create({
-  baseURL: `http://localhost:${process.env.PORT}/offline_api`,
+  baseURL: process.env.NODE_ENV === 'development' ? `http://localhost:${process.env.PORT}/offline_api` : `${process.env.HEROKU_SERVER}/offline_api` ,
 });
 
 function generateSessions(id) {
